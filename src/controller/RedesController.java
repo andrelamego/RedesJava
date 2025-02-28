@@ -72,9 +72,21 @@ public class RedesController {
 						bufferNome = linha;
 					}
 					
-					if(linha.contains("inet")) {
-						System.out.println(bufferNome);
-						System.out.println(linha);
+					if(linha.contains("inet ")) {
+						String[] splitBuffer = bufferNome.split(" ");
+						String[] splitIP = linha.split(" ");
+						StringBuffer nomeAdaptador = new StringBuffer();
+						StringBuffer enderecoIP = new StringBuffer();
+						
+						nomeAdaptador.append(splitBuffer[0]);
+						nomeAdaptador.append(splitBuffer[1]);
+						
+						enderecoIP.append(splitIP[0]);
+						enderecoIP.append(" ");
+						enderecoIP.append(splitIP[1]);
+						
+						System.out.println(nomeAdaptador);
+						System.out.println(enderecoIP);
 						System.out.println("");
 						
 					}
@@ -142,7 +154,7 @@ public class RedesController {
 				
 				while(linha != null) {
 					if(linha.contains("avg")) {
-						System.out.println(linha.substring(31, 37));
+						System.out.println("Avg: "+linha.substring(30, 36)+"ms");
 					}
 					
 					linha = buffer.readLine();
