@@ -8,5 +8,6 @@ public class Main {
 		
 		
 		redes.ip();
+		redes.ping();
 	}
 }

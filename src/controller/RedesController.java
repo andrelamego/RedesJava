@@ -76,6 +76,7 @@ public class RedesController {
 						System.out.println(bufferNome);
 						System.out.println(linha);
 						System.out.println("");
+						
 					}
 					
 					linha = buffer.readLine();
@@ -94,6 +95,43 @@ public class RedesController {
 	
 	
 	public void ping() {
+		String osName = os();
+		
+		if(osName.contains("Windows")) {
+			String procWin = "ping -4 -n 10 www.google.com.br";
+			String[] vetCmd = procWin.split(" ");
+			
+			try {
+				Process p = Runtime.getRuntime().exec(vetCmd);
+				
+				InputStream stream = p.getInputStream();
+				InputStreamReader reader = new InputStreamReader(stream);
+				BufferedReader buffer = new BufferedReader(reader);
+				
+				String linha = buffer.readLine();
+				
+				while(linha != null) {
+					if(linha.contains("dia")) {
+						System.out.println(linha.substring(34));
+					}
+					
+					linha = buffer.readLine();
+				}
+				buffer.close();
+				reader.close();
+				stream.close();
+				
+				
+			} catch (Exception e) {
+				String erro = e.getMessage();
+				System.err.println(erro);
+			}
+		}
+		else {
+			
+		}
+		
+		
 		
 	}
 }
