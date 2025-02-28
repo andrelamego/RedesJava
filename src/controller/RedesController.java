@@ -128,7 +128,34 @@ public class RedesController {
 			}
 		}
 		else {
+			String procLinux = "ping -4 -c 10 www.google.com.br";
+			String[] vetCmd = procLinux.split(" ");
 			
+			try {
+				Process p = Runtime.getRuntime().exec(vetCmd);
+				
+				InputStream stream = p.getInputStream();
+				InputStreamReader reader = new InputStreamReader(stream);
+				BufferedReader buffer = new BufferedReader(reader);
+				
+				String linha = buffer.readLine();
+				
+				while(linha != null) {
+					if(linha.contains("avg")) {
+						System.out.println(linha.substring(31, 37));
+					}
+					
+					linha = buffer.readLine();
+				}
+				buffer.close();
+				reader.close();
+				stream.close();
+				
+				
+			} catch (Exception e) {
+				String erro = e.getMessage();
+				System.err.println(erro);
+			}
 		}
 		
 		

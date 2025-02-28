@@ -7,7 +7,7 @@ public class Main {
 		RedesController redes = new RedesController();
 		
 		
-		redes.ip();
+		//redes.ip();
 		redes.ping();
 	}
 }
