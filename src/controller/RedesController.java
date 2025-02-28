@@ -81,14 +81,13 @@ public class RedesController {
 						nomeAdaptador.append(splitBuffer[0]);
 						nomeAdaptador.append(splitBuffer[1]);
 						
-						enderecoIP.append(splitIP[0]);
+						enderecoIP.append(splitIP[4]);
 						enderecoIP.append(" ");
-						enderecoIP.append(splitIP[1]);
+						enderecoIP.append(splitIP[5]);
 						
 						System.out.println(nomeAdaptador);
 						System.out.println(enderecoIP);
 						System.out.println("");
-						
 					}
 					
 					linha = buffer.readLine();
